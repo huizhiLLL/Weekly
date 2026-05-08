@@ -331,9 +331,7 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
             {nextUrl ? <a href={translatePath(nextUrl)}>下一篇 |</a> : null}
             {prevUrl ? <a href={translatePath(prevUrl)}>上一篇 |</a> : null}
             <a href={translatePath('/')}>去首页 |</a>
-            <a href={`https://twitter.com/${SITE.twitterId}`} target='_blank' title='Follow'>Twitter</a>
-            <a href={`https://github.com/${SITE.repo}`} title='Star' target='_blank' class='lg:inline-block hidden'> | Github</a>
-            <a href='/rss.xml' title='Subscribe' target='_blank' class='xl:inline-block hidden'> | RSS</a>
+            <a href={`https://github.com/${SITE.repo}`} title='Star' target='_blank' class='lg:inline-block hidden'>Github</a>
           </div>
         </div>
       </div>
