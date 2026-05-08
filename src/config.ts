@@ -7,7 +7,7 @@ export const SITE = {
   siteImage: "https://weekly.huizhi.ink/icon-144.png",
   homePage: "https://weekly.huizhi.ink",
   blogPage: "https://weekly.huizhi.ink/",
-  twitterId: "huizhiLLL",
+  twitterId: "huizhiL111",
   githubId: "huizhiLLL",
   repo: "huizhiLLL/Weekly",
 };

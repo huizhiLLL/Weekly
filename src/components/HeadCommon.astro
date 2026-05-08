@@ -1,8 +1,6 @@
 ---
 import '../styles/theme.css';
 import '../styles/index.css';
-import { SITE } from '@/config';
-const { icon } = SITE;
 ---
 
 <!-- Global Metadata -->
@@ -15,8 +13,8 @@ const { icon } = SITE;
 
 <link rel='icon' href='/favicon.ico' />
 <link rel='icon' type='image/png' sizes='32x32' href='/icon-32.png' />
-<link rel='icon' type='image/png' sizes='144x144' href={icon} />
-<link rel='apple-touch-icon' sizes='144x144' href={icon} />
+<link rel='icon' type='image/png' sizes='144x144' href='/icon-144.png' />
+<link rel='apple-touch-icon' sizes='144x144' href='/icon-144.png' />
 <link rel='sitemap' href='/sitemap.xml' />
 <!-- Canonical URL is handled in HeadSEO.astro (included via BaseLayout) -->
 
