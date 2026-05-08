@@ -1,0 +1,29 @@
+---
+import PostLayout from '../../layouts/post.astro';
+import { getIndex } from '@/util';
+
+export async function getStaticPaths() {
+  const posts = Object.values(import.meta.glob('./*.md', { eager: true })) as any[];
+
+  return posts.map((post) => ({
+    params: {
+      id: String(getIndex(post.url)),
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const content = await post.compiledContent();
+const frontmatter = {
+  ...post.frontmatter,
+  url: post.url,
+  numericUrl: `/posts/${Astro.params.id}`,
+};
+---
+
+<PostLayout frontmatter={frontmatter}>
+  <Fragment set:html={content} />
+</PostLayout>

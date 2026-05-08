@@ -30,8 +30,7 @@ async function main() {
     const descMatch = mdContent.match(/<small>(.*?)<\/small>/s);
     const stat = await fs.stat(fullPath);
     const modified = stat.mtime.toISOString().split("T")[0];
-    const slug = name.replace(/\.md$/, "");
-    const url = `${SITE_URL}/posts/${slug}`;
+    const url = `${SITE_URL}/posts/${num}`;
     const displayTitle = `第 ${num} 期 - ${title}`;
 
     posts.push({

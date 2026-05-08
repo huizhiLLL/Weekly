@@ -12,12 +12,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/posts/:id(\\d+)-:title*",
-      "destination": "/posts/:id",
-      "permanent": true
-    }
   ]
 }
