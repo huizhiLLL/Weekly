@@ -1,0 +1,22 @@
+# Weekly-Memos
+
+> huizhiLLL 的个人周记、阅读记录与生活备忘。
+
+## About
+
+Weekly-Memos 是 huizhiLLL 用来记录每周想法、阅读、技术实践和生活片段的个人静态站点。
+
+## Content
+
+- 中文周记
+- 可选英文翻译
+- RSS: https://weekly.huizhi.ink/rss.xml
+
+## Author
+
+huizhiLLL
+
+## Links
+
+- GitHub: https://github.com/huizhiLLL
+- Repository: https://github.com/huizhiLLL/Weekly
