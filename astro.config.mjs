@@ -38,8 +38,7 @@ function defaultLayoutPlugin() {
     const { frontmatter } = file.data.astro;
     frontmatter.layout = "@layouts/post.astro";
 
-    const isEn = filePath.includes("/en/posts/");
-    const postsDir = isEn ? "/en/posts/" : "/posts/";
+    const postsDir = "/posts/";
 
     const relativePath = filePath
       .split(/[\/\\]posts[\/\\]/)[1]
@@ -108,13 +107,6 @@ export default defineConfig({
       },
     }),
   ],
-  i18n: {
-    defaultLocale: "zh",
-    locales: ["zh", "en"],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
   markdown: {
     remarkPlugins: [
       defaultLayoutPlugin,

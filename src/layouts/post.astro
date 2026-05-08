@@ -8,7 +8,7 @@ import ReaderModeToggle from '../components/ReaderModeToggle.astro';
 import { SITE, GISCUS_CONFIG } from '@/config';
 import { SUPPORT_CALLOUT } from '@/supportCallout';
 import { parseTitle, sortPosts, getIndex, toNumericUrl, extractTitlePart, getSlugParts } from '@/util';
-import { getLangFromUrl, useTranslations, useLocalizedPath } from '../i18n/utils';
+import { getLangFromUrl, useLocalizedPath } from '../i18n/utils';
 
 export interface Props {
   frontmatter: {
@@ -34,7 +34,6 @@ const normalize = (path: string | undefined) => {
 const { date, image, description, url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 const translatePath = useLocalizedPath(lang);
 
 const normalizedCurrent = normalize(currentPage) ?? currentPage;
@@ -44,9 +43,9 @@ let title = parseTitle(effectivePath, legacySlug, issueTitle, lang);
 
 const { numberPart, name } = getSlugParts(legacySlug ?? extractTitlePart(effectivePath));
 const displayName = name || issueTitle || '';
-const displayTitle = lang === 'en' ? displayName.replace(/-/g, ' ') : displayName;
-const numberPrefix = lang === 'en' ? `${numberPart}.` : `第 ${numberPart} 期`;
-const titleSeparator = lang === 'en' ? ' ' : ' - ';
+const displayTitle = displayName;
+const numberPrefix = `第 ${numberPart} 期`;
+const titleSeparator = ' - ';
 
 // Check if current path is the legacy slug path (with hyphen and title)
 // If so, mark it to be ignored by Pagefind to avoid duplicate search results
@@ -75,11 +74,6 @@ const getGiscusTerm = () => {
 };
 
 const giscusTerm = getGiscusTerm();
-
-const cleanPath = effectivePath.startsWith('/en/') ? effectivePath.slice(3) : effectivePath;
-const zhPath = cleanPath;
-const enPath = `/en${cleanPath.startsWith('/') ? cleanPath : '/' + cleanPath}`;
-const translationLabel = lang === 'en' ? '切换到中文' : 'Switch to English';
 
 const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
 ---
@@ -313,13 +307,6 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
           </span>
           <ReaderModeToggle />
           <Search />
-          <a
-            href={lang === 'en' ? zhPath : enPath}
-            class='lang-switch-wrapper flex items-center justify-center h-9 w-9 rounded-full ml-2 !bg-gray-100 dark:!bg-gray-800 text-sm font-medium transition-colors !text-gray-600 dark:!text-gray-400 hover:!text-gray-900 dark:hover:!text-gray-200 lang-switch-mobile-btn'
-            aria-label={translationLabel}
-          >
-            {lang === 'en' ? '中' : 'En'}
-          </a>
         </h1>
         <slot />
         <div class='flex align-middle justify-center mt-4 pay-button-wrapper'>
@@ -327,13 +314,13 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
             class='inline-block items-center rounded px-5 py-3 text-sm font-medium pay-button'
             href={SUPPORT_CALLOUT.link}
             target='_blank'
-            rel='noreferrer'>{SUPPORT_CALLOUT[lang]}</a
+            rel='noreferrer'>{SUPPORT_CALLOUT.zh}</a
           >
         </div>
         <hr class='post-divider' />
         <div class='flex justify-between md:flex-row flex-col mt-2 post-footer'>
           <div class='text-gray-800 dark:text-gray-200 flex-1'>
-            {lang === 'en' ? 'Published at: ' : '发布日期：'}<a
+            发布日期：<a
               href={`https://github.com/${SITE.repo}/tree/main/src/pages${url}.md`}
               target='_blank'
               data-pagefind-sort='date'
@@ -341,9 +328,9 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
             >
           </div>
           <div class='md:mt-0 mt-4 flex-1 text-right'>
-            {nextUrl ? <a href={translatePath(nextUrl)}>{lang === 'en' ? 'Next' : '下一篇'} |</a> : null}
-            {prevUrl ? <a href={translatePath(prevUrl)}>{lang === 'en' ? 'Prev' : '上一篇'} |</a> : null}
-            <a href={translatePath('/')}>{lang === 'en' ? 'Home' : '去首页'} |</a>
+            {nextUrl ? <a href={translatePath(nextUrl)}>下一篇 |</a> : null}
+            {prevUrl ? <a href={translatePath(prevUrl)}>上一篇 |</a> : null}
+            <a href={translatePath('/')}>去首页 |</a>
             <a href={`https://twitter.com/${SITE.twitterId}`} target='_blank' title='Follow'>Twitter</a>
             <a href={`https://github.com/${SITE.repo}`} title='Star' target='_blank' class='lg:inline-block hidden'> | Github</a>
             <a href='/rss.xml' title='Subscribe' target='_blank' class='xl:inline-block hidden'> | RSS</a>
@@ -367,7 +354,7 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
             data-emit-metadata={GISCUS_CONFIG.emitMetadata}
             data-input-position={GISCUS_CONFIG.inputPosition}
             data-theme={giscusTheme}
-            data-lang={lang === 'en' ? 'en' : 'zh-CN'}
+            data-lang='zh-CN'
             data-loading='lazy'
             crossorigin='anonymous'
             async

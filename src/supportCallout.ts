@@ -1,11 +1,10 @@
 export const SUPPORT_CALLOUT = {
   zh: "欢迎在 GitHub 关注这个周记仓库",
-  en: "Follow this weekly memo repository on GitHub",
   link: "https://github.com/huizhiLLL/Weekly",
 };
 
-export const renderSupportCalloutForRSS = (lang: "zh" | "en" = "zh") => {
-  const cta = SUPPORT_CALLOUT[lang] ?? SUPPORT_CALLOUT.zh;
+export const renderSupportCalloutForRSS = () => {
+  const cta = SUPPORT_CALLOUT.zh;
   const { link } = SUPPORT_CALLOUT;
   return `
     <hr style="border:none;border-top:0.5px solid rgba(0,0,0,0.08);margin:26px 0 14px;" />
