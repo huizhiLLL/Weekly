@@ -5,14 +5,19 @@ import { getIndex } from '@/util';
 export async function getStaticPaths() {
   const posts = Object.values(import.meta.glob('./*.md', { eager: true })) as any[];
 
-  return posts.map((post) => ({
-    params: {
-      id: String(getIndex(post.url)),
-    },
-    props: {
-      post,
-    },
-  }));
+  return posts
+    .filter((post) => {
+      const index = getIndex(post.url);
+      return post.url !== `/posts/${index}`;
+    })
+    .map((post) => ({
+      params: {
+        id: String(getIndex(post.url)),
+      },
+      props: {
+        post,
+      },
+    }));
 }
 
 const { post } = Astro.props;

@@ -4,7 +4,7 @@ export const SITE = {
   description: "huizhiLLL 的个人周记、阅读记录与生活备忘",
   keywords: "huizhiLLL,Weekly-Memos,Weekly,Blog,周记,备忘",
   icon: "https://weekly.huizhi.ink/icon-144.png",
-  siteImage: "https://weekly.huizhi.ink/icon-144.png",
+  siteImage: "https://weekly.huizhi.ink/assets/1.svg",
   homePage: "https://weekly.huizhi.ink",
   blogPage: "https://blog.huizhi.ink",
   twitterId: "huizhiL111",
