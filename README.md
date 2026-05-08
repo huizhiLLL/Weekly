@@ -6,5 +6,5 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 
 ## List
 
-* [第 1 期 - 1](https://weekly.huizhi.ink/posts/1)
+* [第 1 期 - 从 Memos 到 Weekly](https://weekly.huizhi.ink/posts/1)
 
