@@ -12,6 +12,13 @@ function parsePostFileName(name) {
   return { num, title };
 }
 
+function normalizeAssetPath(src) {
+  if (!src) return src;
+  if (src.startsWith("./assets/")) return src.replace(/^\./, "");
+  if (src.startsWith("assets/")) return `/${src}`;
+  return src;
+}
+
 async function main() {
   const files = await fs.readdir(POSTS_DIR);
   const mdFiles = files
@@ -37,7 +44,7 @@ async function main() {
       num,
       title,
       url,
-      pic: imgMatch ? imgMatch[1] : "",
+      pic: normalizeAssetPath(imgMatch ? imgMatch[1] : ""),
       description: descMatch ? descMatch[1].trim() : "",
     });
 

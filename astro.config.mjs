@@ -32,6 +32,13 @@ function getTwitterImage(num) {
   return undefined;
 }
 
+function normalizeAssetPath(src) {
+  if (!src) return src;
+  if (src.startsWith("./assets/")) return src.replace(/^\./, "");
+  if (src.startsWith("assets/")) return `/${src}`;
+  return src;
+}
+
 function defaultLayoutPlugin() {
   return function (tree, file) {
     const filePath = file.history[0];
@@ -71,7 +78,7 @@ function defaultLayoutPlugin() {
     }
 
     frontmatter.description = frontmatter.description || SITE.description;
-    frontmatter.image = frontmatter.image || SITE.siteImage;
+    frontmatter.image = normalizeAssetPath(frontmatter.image || SITE.siteImage);
 
     // Fallback to file creation time if no date is specified
     if (!frontmatter.date) {

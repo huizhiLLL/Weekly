@@ -6,6 +6,13 @@ import path from "path";
 // Cache for the metadata to avoid reading from disk too often
 let imageMetadataCache = null;
 
+function normalizeAssetPath(src) {
+  if (!src) return src;
+  if (src.startsWith("./assets/")) return src.replace(/^\./, "");
+  if (src.startsWith("assets/")) return `/${src}`;
+  return src;
+}
+
 function getImageMetadata() {
   if (process.env.NODE_ENV === "production" && imageMetadataCache) {
     return imageMetadataCache;
@@ -30,7 +37,7 @@ const getHeroImage = (tree) => {
     if (heroUrl) return;
     const match = /<img\s+[^>]*src="([^"]+)"/.exec(node.value);
     if (match) {
-      const url = match[1];
+      const url = normalizeAssetPath(match[1]);
       const domainRegex =
         /https:\/\/(?:cdn\.(?:fliggy\.com|alipayobjects\.com)|gw\.(?:alipayobjects\.com|alicdn\.com)|img\.alicdn\.com|raw\.githubusercontent\.com|camo\.githubusercontent\.com)/;
       const skipRegex = /\.(?:gif|svg|GIF|SVG)(?:\?.*)?$/;
@@ -62,27 +69,32 @@ export default function rehypeCustomizeImageSrc() {
       // 1. Process <img> tags
       const fullImgRegex = /<img\s+[^>]*src="([^"]+)"[^>]*>/g;
       node.value = node.value.replace(fullImgRegex, (fullMatch, p1) => {
-        const urlLower = p1.toLowerCase();
+        const imageSrc = normalizeAssetPath(p1);
+        const normalizedFullMatch =
+          imageSrc === p1
+            ? fullMatch
+            : fullMatch.replace(/\s*src="[^"]*"/, ` src="${imageSrc}"`);
+        const urlLower = imageSrc.toLowerCase();
         const isSvgOrGif =
           urlLower.includes(".svg") ||
           urlLower.includes(".gif") ||
-          p1.includes("2e737667") || // .svg
-          p1.includes("2e676966"); // .gif
+          imageSrc.includes("2e737667") || // .svg
+          imageSrc.includes("2e676966"); // .gif
 
         if (isSvgOrGif) {
-          return fullMatch;
+          return normalizedFullMatch;
         }
 
         const domainRegex =
           /https:\/\/(?:cdn\.(?:fliggy\.com|alipayobjects\.com)|gw\.(?:alipayobjects\.com|alicdn\.com)|img\.alicdn\.com|raw\.githubusercontent\.com|camo\.githubusercontent\.com)/;
-        if (!p1.match(domainRegex)) {
-          return fullMatch;
+        if (!imageSrc.match(domainRegex)) {
+          return normalizedFullMatch;
         }
 
         imageIndex++;
         const isFirstImage = imageIndex === 1;
-        const separator = p1.includes("?") ? "&" : "?";
-        const meta = imageMetadata[p1];
+        const separator = imageSrc.includes("?") ? "&" : "?";
+        const meta = imageMetadata[imageSrc];
 
         // Extract original width/height if they exist
         const originalWidthMatch = fullMatch.match(/width="([^"]*)"/);
@@ -94,7 +106,7 @@ export default function rehypeCustomizeImageSrc() {
           ? originalHeightMatch[1].replace("px", "")
           : null;
 
-        let newAttrs = `src="${p1}${separator}x-oss-process=image/auto-orient,1/resize,w_2000/format,webp" data-lightense-src="${p1}" data-pswp-src="${p1}"`;
+        let newAttrs = `src="${imageSrc}${separator}x-oss-process=image/auto-orient,1/resize,w_2000/format,webp" data-lightense-src="${imageSrc}" data-pswp-src="${imageSrc}"`;
 
         // Use metadata for aspect-ratio and lightbox, user-specified for display size
         const metaWidth = meta?.width;
