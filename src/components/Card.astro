@@ -32,7 +32,7 @@ const { image, description, date } = post.frontmatter;
   href={link}
   data-astro-prefetch
   data-image={image}
-  class='pb-3 md:mt-5 mt-4 md:mr-4 flex flex-col justify-center rounded-lg shadow-md overflow-hidden mx-auto md:w-80 sm:w-96 w-full card-content preload-link'
+  class='pb-3 flex flex-col justify-center rounded-lg shadow-md overflow-hidden w-full card-content preload-link'
   style='transition: all 200ms ease; will-change: transform;'
 >
   <img
@@ -43,7 +43,7 @@ const { image, description, date } = post.frontmatter;
     loading={priority ? 'eager' : 'lazy'}
     decoding='async'
     fetchpriority={isLCP ? 'high' : 'auto'}
-    class='block md:w-80 md:h-48 sm:w-96 w-full sm:h-52 h-56 rounded-t-lg'
+    class='block w-full aspect-[5/3] object-cover rounded-t-lg'
     style='transition: transform 200ms ease;'
   />
   <div class='w-full flex justify-between items-center leading-tight pt-3 px-3'>

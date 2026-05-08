@@ -32,9 +32,50 @@ const allPosts = sortPosts(posts);
   <HeadPreload slot='head' allPosts={allPosts} />
 
   <Header />
-  <div class='mx-auto -mt-5 mb-12 xl:max-w-7xl w-full lg:max-w-5xl md:max-w-2xl max-w-xl box-border md:px-0 sm:px-3 px-4'>
-    <div class='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 mx-0 md:-mr-5 mr-0'>
+  <div class='home-shell mt-9 mb-12'>
+    <div class='home-grid'>
       {allPosts.map((post, index) => <Card post={post} priority={index <= 2} isLCP={index <= 2} />)}
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .home-shell {
+    width: min(calc(100% - 32px), 1824px);
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+
+  .home-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  @media (min-width: 640px) {
+    .home-shell {
+      width: min(calc(100% - 48px), 1824px);
+    }
+
+    .home-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .home-shell {
+      width: min(90vw, 1824px);
+    }
+
+    .home-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1412px) {
+    .home-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -11,7 +11,7 @@ const translatePath = useLocalizedPath(lang);
 
 <header>
   <nav
-    class='nav-wrapper mx-auto xl:max-w-7xl w-full lg:max-w-5xl md:max-w-2xl max-w-xl box-border md:px-0 sm:px-3 px-4'
+    class='nav-wrapper'
     title={t('site.title')}
   >
     <div class='logo flex content-logo'>
@@ -72,17 +72,32 @@ const translatePath = useLocalizedPath(lang);
   }
 
   .nav-wrapper {
+    width: min(calc(100% - 32px), 1824px);
+    margin-inline: auto;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 36px;
   }
 
+  @media (min-width: 640px) {
+    .nav-wrapper {
+      width: min(calc(100% - 48px), 1824px);
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .nav-wrapper {
+      width: min(90vw, 1824px);
+    }
+  }
+
   @media (max-width: 800px) {
     .nav-wrapper {
       margin: 5px 0;
-      max-width: 100%;
       width: 100%;
+      padding-inline: 16px;
     }
   }
 

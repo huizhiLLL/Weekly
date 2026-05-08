@@ -35,3 +35,5 @@ CLAUDE.md
 journal/
 .claude/settings.local.json
 .claude/
+
+.playwright-mcp/
