@@ -1,5 +1,12 @@
 [
   {
+    "num": 2,
+    "title": "第二周",
+    "url": "https://weekly.huizhi.ink/posts/2",
+    "pic": "/assets/1.png",
+    "description": "描述"
+  },
+  {
     "num": 1,
     "title": "从 Memos 到 Weekly",
     "url": "https://weekly.huizhi.ink/posts/1",
