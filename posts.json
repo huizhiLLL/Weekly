@@ -3,7 +3,7 @@
     "num": 2,
     "title": "第二周",
     "url": "https://weekly.huizhi.ink/posts/2",
-    "pic": "/assets/1.png",
+    "pic": "/assets/1.svg",
     "description": "描述"
   },
   {
@@ -11,6 +11,6 @@
     "title": "从 Memos 到 Weekly",
     "url": "https://weekly.huizhi.ink/posts/1",
     "pic": "/assets/1.svg",
-    "description": "这是 Weekly-Memos 的第一篇周记"
+    "description": ""
   }
 ]
