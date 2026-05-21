@@ -1,5 +1,12 @@
 [
   {
+    "num": 3,
+    "title": "3",
+    "url": "https://weekly.huizhi.ink/posts/3",
+    "pic": "",
+    "description": ""
+  },
+  {
     "num": 2,
     "title": "DCTimer-BLE 的发布",
     "url": "https://weekly.huizhi.ink/posts/2",
@@ -10,7 +17,7 @@
     "num": 1,
     "title": "从 Memos 到 Weekly",
     "url": "https://weekly.huizhi.ink/posts/1",
-    "pic": "/assets/1.svg",
+    "pic": "/assets/wakatime.png",
     "description": ""
   }
 ]
