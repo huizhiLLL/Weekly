@@ -1,5 +1,5 @@
-* [第 5 期 - 输入与输出](https://weekly.huizhi.ink/posts/5) - 2026-06-07
-* [第 4 期 - 继续学习](https://weekly.huizhi.ink/posts/4) - 2026-06-07
-* [第 3 期 - 进展与维护](https://weekly.huizhi.ink/posts/3) - 2026-06-07
-* [第 2 期 - DCTimer-BLE 的发布](https://weekly.huizhi.ink/posts/2) - 2026-06-07
-* [第 1 期 - 从 Memos 到 Weekly](https://weekly.huizhi.ink/posts/1) - 2026-06-07
+* [第 6 期 - 关于前端字体](https://weekly.huizhi.ink/posts/6) - 2026-06-12
+* [第 5 期 - 输入与输出](https://weekly.huizhi.ink/posts/5) - 2026-06-12
+* [第 4 期 - 继续学习](https://weekly.huizhi.ink/posts/4) - 2026-06-12
+* [第 3 期 - 进展与维护](https://weekly.huizhi.ink/posts/3) - 2026-06-12
+* [第 2 期 - DCTimer-BLE 的发布](https://weekly.huizhi.ink/posts/2) - 2026-06-12
