@@ -13,7 +13,6 @@ import { getLangFromUrl, useLocalizedPath } from '../i18n/utils';
 export interface Props {
   frontmatter: {
     date: string;
-    image: string;
     description: string;
     url: string;
     socialImage: string;
@@ -31,7 +30,7 @@ const normalize = (path: string | undefined) => {
   if (!path) return path;
   return path !== '/' && path.endsWith('/') ? path.slice(0, -1) : path;
 };
-const { date, image, description, url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
+const { date, description, url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useLocalizedPath(lang);
@@ -53,7 +52,6 @@ const isLegacyPath = normalizedCurrent !== normalizedNumeric && normalizedCurren
 
 const content = {
   title,
-  image: image,
   description,
   socialImage,
   date,
