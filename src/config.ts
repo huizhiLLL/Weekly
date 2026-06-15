@@ -15,7 +15,7 @@ export const SITE = {
 export const GISCUS_CONFIG = {
   repo: "huizhiLLL/Weekly",
   repoId: "R_kgDOSXmBPA",
-  category: "General",
+  category: "Announcements",
   categoryId: "DIC_kwDOSXmBPM4C-vZ3",
   mapping: "specific",
   strict: "0",
