@@ -3,7 +3,7 @@
     "num": 7,
     "title": "忙忙又碌碌",
     "url": "https://weekly.huizhi.ink/posts/7",
-    "pic": "/assets/25-07/tw1.png",
+    "pic": "/assets/26-07/tw1.png",
     "description": ""
   },
   {
@@ -31,21 +31,21 @@
     "num": 3,
     "title": "进展与维护",
     "url": "https://weekly.huizhi.ink/posts/3",
-    "pic": "/assets/25-03/aletheia.png",
+    "pic": "/assets/26-03/aletheia.png",
     "description": ""
   },
   {
     "num": 2,
     "title": "DCTimer-BLE 的发布",
     "url": "https://weekly.huizhi.ink/posts/2",
-    "pic": "/assets/25-02/dctimer.png",
+    "pic": "/assets/26-02/dctimer.png",
     "description": ""
   },
   {
     "num": 1,
     "title": "从 Memos 到 Weekly",
     "url": "https://weekly.huizhi.ink/posts/1",
-    "pic": "/assets/25-01/wakatime.png",
+    "pic": "/assets/26-01/wakatime.png",
     "description": ""
   }
 ]
