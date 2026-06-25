@@ -5,7 +5,7 @@ export interface Props {
   post: {
     url: string;
     frontmatter: {
-      description: string;
+      tags?: string[];
       date: string;
       legacySlug?: string;
       issueTitle?: string;
@@ -22,7 +22,8 @@ const legacySlug = post.frontmatter?.legacySlug;
 const issueTitle = post.frontmatter?.issueTitle;
 const link = post.frontmatter?.numericUrl ?? toNumericUrl(post.url);
 const title = parseTitle(link, legacySlug, issueTitle, lang);
-const { description, date } = post.frontmatter;
+const { date } = post.frontmatter;
+const tags = post.frontmatter.tags ?? [];
 ---
 
 <a
@@ -41,9 +42,15 @@ const { description, date } = post.frontmatter;
       {date}
     </time>
   </div>
-  <p class='text-gray-600 dark:text-gray-300 overflow-hidden pt-2 line-clamp-2 w-full md:text-sm text-base'>
-    {description}
-  </p>
+  {
+    tags.length > 0 && (
+      <div class='article-tags' aria-label='文章标签'>
+        {tags.map((tag) => (
+          <span>{tag}</span>
+        ))}
+      </div>
+    )
+  }
 </a>
 
 <style>
@@ -56,5 +63,32 @@ const { description, date } = post.frontmatter;
     .article-card {
       padding: 16px;
     }
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 12px;
+  }
+
+  .article-tags span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 2px 9px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 999px;
+    color: rgb(75 85 99);
+    background: rgba(148, 163, 184, 0.08);
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  :global([data-theme='dark']) .article-tags span {
+    color: rgb(209 213 219);
+    border-color: rgba(148, 163, 184, 0.24);
+    background: rgba(148, 163, 184, 0.1);
   }
 </style>

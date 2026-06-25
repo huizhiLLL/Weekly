@@ -13,7 +13,7 @@ import { getLangFromUrl, useLocalizedPath } from '../i18n/utils';
 export interface Props {
   frontmatter: {
     date: string;
-    description: string;
+    tags?: string[];
     url: string;
     socialImage: string;
     numericUrl?: string;
@@ -30,7 +30,7 @@ const normalize = (path: string | undefined) => {
   if (!path) return path;
   return path !== '/' && path.endsWith('/') ? path.slice(0, -1) : path;
 };
-const { date, description, url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
+const { date, tags = [], url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useLocalizedPath(lang);
@@ -52,9 +52,10 @@ const isLegacyPath = normalizedCurrent !== normalizedNumeric && normalizedCurren
 
 const content = {
   title,
-  description,
+  description: SITE.description,
   socialImage,
   date,
+  tags,
 };
 const currentUrl = `${SITE.homePage}${effectivePath}`;
 
@@ -287,6 +288,26 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
     :global(iframe.giscus-frame) {
       width: 100%;
     }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+      color: var(--theme-text);
+    }
+
+    .post-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 2px 10px;
+      border: 1px solid var(--theme-divider);
+      border-radius: 999px;
+      background: var(--theme-bg-hover);
+      font-size: var(--font-size-small);
+      line-height: 1.4;
+    }
   </style>
 
   <!-- Post layout -->
@@ -307,6 +328,15 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
           <Search />
         </h1>
         <slot />
+        {
+          tags.length > 0 && (
+            <div class='post-tags' aria-label='文章标签'>
+              {tags.map((tag) => (
+                <span class='post-tag'>{tag}</span>
+              ))}
+            </div>
+          )
+        }
         <div class='flex align-middle justify-center mt-4 pay-button-wrapper'>
           <a
             class='inline-block items-center rounded px-5 py-3 text-sm font-medium pay-button'

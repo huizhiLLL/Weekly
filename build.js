@@ -19,6 +19,25 @@ function normalizeAssetPath(src) {
   return src;
 }
 
+function parseFrontmatterTags(content) {
+  const frontmatterMatch = content.match(/^---\s*([\s\S]*?)\s*---/);
+  if (!frontmatterMatch) return [];
+
+  const frontmatter = frontmatterMatch[1];
+  const lines = frontmatter.split(/\r?\n/);
+  const tagsLineIndex = lines.findIndex((line) => /^tags:\s*$/.test(line));
+  if (tagsLineIndex >= 0) {
+    const tags = [];
+    for (const line of lines.slice(tagsLineIndex + 1)) {
+      if (!/^\s+-\s+/.test(line)) break;
+      tags.push(line.replace(/^\s+-\s+/, "").trim().replace(/^['"]|['"]$/g, ""));
+    }
+    return tags.filter(Boolean);
+  }
+
+  return [];
+}
+
 async function main() {
   const files = await fs.readdir(POSTS_DIR);
   const mdFiles = files
@@ -34,7 +53,7 @@ async function main() {
     const fullPath = `${POSTS_DIR}/${name}`;
     const mdContent = await fs.readFile(fullPath, "utf8");
     const imgMatch = mdContent.match(/<img\s+src="([^"]+)"/);
-    const descMatch = mdContent.match(/<small>(.*?)<\/small>/s);
+    const tags = parseFrontmatterTags(mdContent);
     const stat = await fs.stat(fullPath);
     const modified = stat.mtime.toISOString().split("T")[0];
     const url = `${SITE_URL}/posts/${num}`;
@@ -45,7 +64,7 @@ async function main() {
       title,
       url,
       pic: normalizeAssetPath(imgMatch ? imgMatch[1] : ""),
-      description: descMatch ? descMatch[1].trim() : "",
+      tags,
     });
 
     readmeList += `* [${displayTitle}](${url})\n`;
@@ -64,6 +83,18 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 ## List
 
 ${readmeList || "暂无周记。"}
+
+## Writing
+
+文章 frontmatter 使用 \`tags\` 标记主题，格式如下：
+
+\`\`\`yaml
+tags:
+  - Astrbot
+  - MCP
+  - AI
+  - 魔方
+\`\`\`
 `;
 
   await Promise.all([

@@ -73,11 +73,6 @@ function defaultLayoutPlugin() {
       frontmatter.image = imageElement.getAttribute("src");
     }
 
-    if (!frontmatter.description && tree.children[1]?.children[1]?.value) {
-      frontmatter.description = tree.children[1].children[1].value;
-    }
-
-    frontmatter.description = frontmatter.description || SITE.description;
     frontmatter.image = normalizeAssetPath(frontmatter.image || SITE.siteImage);
 
     // Fallback to file creation time if no date is specified

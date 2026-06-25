@@ -15,3 +15,15 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 * [第 2 期 - DCTimer-BLE 的发布](https://weekly.huizhi.ink/posts/2)
 * [第 1 期 - 从 Memos 到 Weekly](https://weekly.huizhi.ink/posts/1)
 
+
+## Writing
+
+文章 frontmatter 使用 `tags` 标记主题，格式如下：
+
+```yaml
+tags:
+  - Astrbot
+  - MCP
+  - AI
+  - 魔方
+```

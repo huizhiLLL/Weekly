@@ -4,55 +4,84 @@
     "title": "未来",
     "url": "https://weekly.huizhi.ink/posts/8",
     "pic": "/assets/26-08/photo.png",
-    "description": ""
+    "tags": [
+      "思考",
+      "工具",
+      "博客"
+    ]
   },
   {
     "num": 7,
     "title": "忙忙又碌碌",
     "url": "https://weekly.huizhi.ink/posts/7",
     "pic": "/assets/26-07/tw1.png",
-    "description": ""
+    "tags": [
+      "期末",
+      "硬件",
+      "WCA",
+      "开发"
+    ]
   },
   {
     "num": 6,
     "title": "关于前端字体",
     "url": "https://weekly.huizhi.ink/posts/6",
     "pic": "",
-    "description": ""
+    "tags": [
+      "前端",
+      "字体",
+      "期末"
+    ]
   },
   {
     "num": 5,
     "title": "输入与输出",
     "url": "https://weekly.huizhi.ink/posts/5",
     "pic": "",
-    "description": ""
+    "tags": [
+      "AI",
+      "Agent",
+      "产品思考"
+    ]
   },
   {
     "num": 4,
     "title": "继续学习",
     "url": "https://weekly.huizhi.ink/posts/4",
     "pic": "",
-    "description": ""
+    "tags": [
+      "学习",
+      "想法"
+    ]
   },
   {
     "num": 3,
     "title": "进展与维护",
     "url": "https://weekly.huizhi.ink/posts/3",
     "pic": "/assets/26-03/aletheia.png",
-    "description": ""
+    "tags": [
+      "维护",
+      "Aletheia"
+    ]
   },
   {
     "num": 2,
     "title": "DCTimer-BLE 的发布",
     "url": "https://weekly.huizhi.ink/posts/2",
     "pic": "/assets/26-02/dctimer.png",
-    "description": ""
+    "tags": [
+      "DCTimer-BLE",
+      "分享"
+    ]
   },
   {
     "num": 1,
     "title": "从 Memos 到 Weekly",
     "url": "https://weekly.huizhi.ink/posts/1",
     "pic": "/assets/26-01/wakatime.png",
-    "description": ""
+    "tags": [
+      "周记",
+      "博客"
+    ]
   }
 ]
