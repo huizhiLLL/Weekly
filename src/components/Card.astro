@@ -45,8 +45,11 @@ const tags = post.frontmatter.tags ?? [];
   {
     tags.length > 0 && (
       <div class='article-tags' aria-label='文章标签'>
-        {tags.map((tag) => (
-          <span>{tag}</span>
+        {tags.map((tag, index) => (
+          <>
+            {index > 0 && <span class='article-tag-separator' aria-hidden='true'>|</span>}
+            <span>{tag}</span>
+          </>
         ))}
       </div>
     )
@@ -68,27 +71,26 @@ const tags = post.frontmatter.tags ?? [];
   .article-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    padding-top: 12px;
+    gap: 6px;
+    padding-top: 10px;
+    color: rgb(107 114 128);
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .article-tags span {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    padding: 2px 9px;
-    border: 1px solid rgba(148, 163, 184, 0.28);
-    border-radius: 999px;
-    color: rgb(75 85 99);
-    background: rgba(148, 163, 184, 0.08);
-    font-size: 13px;
-    line-height: 1.4;
     white-space: nowrap;
   }
 
-  :global([data-theme='dark']) .article-tags span {
+  .article-tag-separator {
+    color: rgb(156 163 175);
+  }
+
+  :global([data-theme='dark']) .article-tags {
     color: rgb(209 213 219);
-    border-color: rgba(148, 163, 184, 0.24);
-    background: rgba(148, 163, 184, 0.1);
+  }
+
+  :global([data-theme='dark']) .article-tag-separator {
+    color: rgb(107 114 128);
   }
 </style>
