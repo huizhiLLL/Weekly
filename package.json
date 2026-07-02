@@ -1,6 +1,6 @@
 {
-  "name": "weekly-memos",
-  "description": "Weekly-Memos，huizhiLLL 的个人周记站点",
+  "name": "Weekly",
+  "description": "Weekly，huizhiLLL 的个人周记站点",
   "type": "module",
   "version": "0.2.0",
   "private": true,

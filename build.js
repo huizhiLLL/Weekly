@@ -74,7 +74,7 @@ async function main() {
     }
   }
 
-  const readmeContent = `# Weekly-Memos
+  const readmeContent = `# Weekly
 
 huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技术实践和生活备忘
 

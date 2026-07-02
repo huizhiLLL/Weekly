@@ -1,8 +1,8 @@
 export const SITE = {
-  title: "Weekly-Memos",
+  title: "Weekly",
   author: "huizhiLLL",
   description: "huizhiLLL 的个人周记、生活记录与思想感悟",
-  keywords: "huizhiLLL,Weekly-Memos,Weekly,Blog,周记,备忘",
+  keywords: "huizhiLLL,Weekly,Blog,周记,备忘",
   icon: "https://weekly.huizhi.ink/icon-144.png",
   siteImage: "https://weekly.huizhi.ink/icon-144.png",
   homePage: "https://weekly.huizhi.ink",
