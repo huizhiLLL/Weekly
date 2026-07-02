@@ -1,5 +1,5 @@
-* [第 8 期 - 未来](https://weekly.huizhi.ink/posts/8) - 2026-06-25
-* [第 7 期 - 忙忙又碌碌](https://weekly.huizhi.ink/posts/7) - 2026-06-25
-* [第 6 期 - 关于前端字体](https://weekly.huizhi.ink/posts/6) - 2026-06-25
-* [第 5 期 - 输入与输出](https://weekly.huizhi.ink/posts/5) - 2026-06-25
-* [第 4 期 - 继续学习](https://weekly.huizhi.ink/posts/4) - 2026-06-25
+* [第 9 期 - 暑期](https://weekly.huizhi.ink/posts/9) - 2026-07-02
+* [第 8 期 - 未来](https://weekly.huizhi.ink/posts/8) - 2026-07-02
+* [第 7 期 - 忙忙又碌碌](https://weekly.huizhi.ink/posts/7) - 2026-07-02
+* [第 6 期 - 关于前端字体](https://weekly.huizhi.ink/posts/6) - 2026-07-02
+* [第 5 期 - 输入与输出](https://weekly.huizhi.ink/posts/5) - 2026-07-02

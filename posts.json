@@ -1,13 +1,24 @@
 [
   {
+    "num": 9,
+    "title": "暑期",
+    "url": "https://weekly.huizhi.ink/posts/9",
+    "pic": "",
+    "tags": [
+      "AI",
+      "前端字体",
+      "曲折"
+    ]
+  },
+  {
     "num": 8,
     "title": "未来",
     "url": "https://weekly.huizhi.ink/posts/8",
     "pic": "/assets/26-08/photo.png",
     "tags": [
-      "思考",
-      "工具",
-      "博客"
+      "图片超分",
+      "产品思考",
+      "转向tags"
     ]
   },
   {
@@ -19,7 +30,8 @@
       "期末",
       "硬件",
       "WCA",
-      "开发"
+      "开发",
+      "个人logo"
     ]
   },
   {
@@ -28,9 +40,8 @@
     "url": "https://weekly.huizhi.ink/posts/6",
     "pic": "",
     "tags": [
-      "前端",
-      "字体",
-      "期末"
+      "前端字体",
+      "复习"
     ]
   },
   {
@@ -41,7 +52,8 @@
     "tags": [
       "AI",
       "Agent",
-      "产品思考"
+      "产品思考",
+      "复习"
     ]
   },
   {
@@ -51,7 +63,7 @@
     "pic": "",
     "tags": [
       "学习",
-      "想法"
+      "llcv"
     ]
   },
   {
@@ -70,8 +82,8 @@
     "url": "https://weekly.huizhi.ink/posts/2",
     "pic": "/assets/26-02/dctimer.png",
     "tags": [
-      "DCTimer-BLE",
-      "分享"
+      "分享",
+      "DCTImer-BLE"
     ]
   },
   {
@@ -80,8 +92,10 @@
     "url": "https://weekly.huizhi.ink/posts/1",
     "pic": "/assets/26-01/wakatime.png",
     "tags": [
-      "周记",
-      "博客"
+      "迁移",
+      "Kami",
+      "Cugent",
+      "lcx"
     ]
   }
 ]

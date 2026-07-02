@@ -6,6 +6,7 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 
 ## List
 
+* [第 9 期 - 暑期](https://weekly.huizhi.ink/posts/9)
 * [第 8 期 - 未来](https://weekly.huizhi.ink/posts/8)
 * [第 7 期 - 忙忙又碌碌](https://weekly.huizhi.ink/posts/7)
 * [第 6 期 - 关于前端字体](https://weekly.huizhi.ink/posts/6)
