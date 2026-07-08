@@ -1,7 +1,7 @@
 [
   {
     "num": 10,
-    "title": "小学期——机械设计课设",
+    "title": "行文反思",
     "url": "https://weekly.huizhi.ink/posts/10",
     "pic": "",
     "tags": [
@@ -11,7 +11,7 @@
   },
   {
     "num": 9,
-    "title": "暑期",
+    "title": "AI前端思考",
     "url": "https://weekly.huizhi.ink/posts/9",
     "pic": "",
     "tags": [
@@ -22,12 +22,12 @@
   },
   {
     "num": 8,
-    "title": "未来",
+    "title": "博客周刊的内容思考",
     "url": "https://weekly.huizhi.ink/posts/8",
     "pic": "/assets/26-08/photo.png",
     "tags": [
       "图片超分",
-      "产品思考",
+      "内容思考",
       "转向tags"
     ]
   },
