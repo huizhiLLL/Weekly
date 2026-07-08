@@ -46,7 +46,7 @@
   },
   {
     "num": 6,
-    "title": "关于前端字体",
+    "title": "前端字体与复习",
     "url": "https://weekly.huizhi.ink/posts/6",
     "pic": "",
     "tags": [
@@ -56,24 +56,21 @@
   },
   {
     "num": 5,
-    "title": "输入与输出",
+    "title": "AI-Agent产品思考",
     "url": "https://weekly.huizhi.ink/posts/5",
     "pic": "",
     "tags": [
-      "AI",
-      "Agent",
       "产品思考",
-      "复习"
+      "输入输出"
     ]
   },
   {
     "num": 4,
-    "title": "继续学习",
+    "title": "LLCV",
     "url": "https://weekly.huizhi.ink/posts/4",
     "pic": "",
     "tags": [
-      "学习",
-      "llcv"
+      "LLCV"
     ]
   },
   {
@@ -82,6 +79,7 @@
     "url": "https://weekly.huizhi.ink/posts/3",
     "pic": "/assets/26-03/aletheia.png",
     "tags": [
+      "进展",
       "维护",
       "Aletheia"
     ]
@@ -92,8 +90,9 @@
     "url": "https://weekly.huizhi.ink/posts/2",
     "pic": "/assets/26-02/dctimer.png",
     "tags": [
-      "分享",
-      "DCTImer-BLE"
+      "DCTImer-BLE",
+      "迁移",
+      "codex"
     ]
   },
   {
@@ -104,8 +103,9 @@
     "tags": [
       "迁移",
       "Kami",
-      "Cugent",
-      "lcx"
+      "魔方",
+      "开发",
+      "AI"
     ]
   }
 ]
