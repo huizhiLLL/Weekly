@@ -1,12 +1,25 @@
 [
   {
+    "num": 11,
+    "title": "Build-what-you-want",
+    "url": "https://weekly.huizhi.ink/posts/11",
+    "pic": "",
+    "tags": [
+      "GPT",
+      "Luna",
+      "开发",
+      "RubiKey"
+    ]
+  },
+  {
     "num": 10,
     "title": "行文反思",
     "url": "https://weekly.huizhi.ink/posts/10",
     "pic": "",
     "tags": [
       "机械设计",
-      "小学期"
+      "小学期",
+      "行文反思"
     ]
   },
   {
