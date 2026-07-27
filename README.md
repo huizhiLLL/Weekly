@@ -6,6 +6,7 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 
 ## List
 
+* [第 12 期 - 智能魔方开发博客](https://weekly.huizhi.ink/posts/12)
 * [第 11 期 - RubiKey](https://weekly.huizhi.ink/posts/11)
 * [第 10 期 - 行文反思](https://weekly.huizhi.ink/posts/10)
 * [第 9 期 - AI前端思考](https://weekly.huizhi.ink/posts/9)

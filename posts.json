@@ -1,5 +1,14 @@
 [
   {
+    "num": 12,
+    "title": "智能魔方开发博客",
+    "url": "https://weekly.huizhi.ink/posts/12",
+    "pic": "",
+    "tags": [
+      "智能魔方"
+    ]
+  },
+  {
     "num": 11,
     "title": "RubiKey",
     "url": "https://weekly.huizhi.ink/posts/11",
