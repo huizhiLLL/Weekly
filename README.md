@@ -6,6 +6,7 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 
 ## List
 
+* [第 17 期 - sfm——无敌物流](https://weekly.huizhi.ink/posts/17)
 * [第 16 期 - 找到一种理想的ux](https://weekly.huizhi.ink/posts/16)
 * [第 15 期 - 首次实习](https://weekly.huizhi.ink/posts/15)
 * [第 14 期 - 开学后的回归正轨](https://weekly.huizhi.ink/posts/14)
