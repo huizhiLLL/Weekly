@@ -6,6 +6,8 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 
 ## List
 
+* [第 19 期 - 实习 —— 冲击下的收获](https://weekly.huizhi.ink/posts/19)
+* [第 18 期 - 前端设计摸索](https://weekly.huizhi.ink/posts/18)
 * [第 17 期 - sfm——无敌物流](https://weekly.huizhi.ink/posts/17)
 * [第 16 期 - 找到一种理想的ux](https://weekly.huizhi.ink/posts/16)
 * [第 15 期 - 首次实习](https://weekly.huizhi.ink/posts/15)
