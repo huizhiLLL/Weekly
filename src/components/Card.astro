@@ -6,7 +6,7 @@ export interface Props {
     url: string;
     frontmatter: {
       tags?: string[];
-      image: string;
+      image?: string;
       description: string;
       date: string;
       legacySlug?: string;
@@ -26,7 +26,8 @@ const legacySlug = post.frontmatter?.legacySlug;
 const issueTitle = post.frontmatter?.issueTitle;
 const link = post.frontmatter?.numericUrl ?? toNumericUrl(post.url);
 const title = parseTitle(link, legacySlug, issueTitle, lang);
-const { image, description, date } = post.frontmatter;
+const { description, date } = post.frontmatter;
+const image = post.frontmatter.image || '/assets/1.svg';
 const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*)?$/i)
   ? `${image}?x-oss-process=image/resize,w_640/format,webp`
   : image;

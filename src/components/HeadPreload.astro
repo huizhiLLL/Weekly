@@ -8,8 +8,7 @@ const { allPosts } = Astro.props;
 
 {
   allPosts.slice(0, 12).map((post, index) => {
-    const image = post.frontmatter.image;
-    if (!image) return null;
+    const image = post.frontmatter.image || '/assets/1.svg';
     const href = `${image}?x-oss-process=image/resize,w_640/format,webp`;
     if (index < 3) {
       return <link rel='preload' href={href} as='image' fetchpriority='high' />;
