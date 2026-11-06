@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeadPreload from '../components/HeadPreload.astro';
 import Card from '../components/Card.astro';
 import Header from '../components/Header/Header.astro';
 import { SITE } from '@/config';
@@ -18,35 +19,62 @@ const allPosts = sortPosts(posts);
         0 4px 8px -2px rgb(0 0 0 / 0.08);
     }
 
+    .card-content:hover img {
+      transform: scale(1.02);
+    }
+
     .card-content:active {
       transform: translateY(-2px);
     }
   </style>
 
+  <HeadPreload slot='head' allPosts={allPosts} />
+
   <Header />
   <div class='home-shell mt-9 mb-12'>
-    <div class='home-list'>
-      {allPosts.map((post) => <Card post={post} />)}
+    <div class='home-grid'>
+      {allPosts.map((post, index) => <Card post={post} priority={index <= 2} isLCP={index <= 2} />)}
     </div>
   </div>
 </BaseLayout>
 
 <style>
   .home-shell {
-    width: min(calc(100% - 32px), 980px);
+    width: min(calc(100% - 32px), 1824px);
     margin-inline: auto;
     box-sizing: border-box;
   }
 
-  .home-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  .home-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   @media (min-width: 640px) {
     .home-shell {
-      width: min(70vw, 980px);
+      width: min(calc(100% - 48px), 1824px);
+    }
+
+    .home-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+  }
+
+  @media (min-width: 1080px) {
+    .home-shell {
+      width: min(90vw, 1824px);
+    }
+
+    .home-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1412px) {
+    .home-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 </style>

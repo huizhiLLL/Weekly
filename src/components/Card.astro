@@ -6,15 +6,19 @@ export interface Props {
     url: string;
     frontmatter: {
       tags?: string[];
+      image: string;
+      description: string;
       date: string;
       legacySlug?: string;
       issueTitle?: string;
       numericUrl?: string;
     };
   };
+  priority?: boolean;
+  isLCP?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, priority = false, isLCP = false } = Astro.props;
 import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 
@@ -22,16 +26,31 @@ const legacySlug = post.frontmatter?.legacySlug;
 const issueTitle = post.frontmatter?.issueTitle;
 const link = post.frontmatter?.numericUrl ?? toNumericUrl(post.url);
 const title = parseTitle(link, legacySlug, issueTitle, lang);
-const { date } = post.frontmatter;
+const { image, description, date } = post.frontmatter;
+const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*)?$/i)
+  ? `${image}?x-oss-process=image/resize,w_640/format,webp`
+  : image;
 const tags = post.frontmatter.tags ?? [];
 ---
 
 <a
   href={link}
   data-astro-prefetch
+  data-image={image}
   class='article-card rounded-lg shadow-md overflow-hidden w-full card-content preload-link'
   style='transition: all 200ms ease; will-change: transform;'
 >
+  <img
+    src={cardImage}
+    width='640'
+    height='384'
+    alt={title}
+    loading={priority ? 'eager' : 'lazy'}
+    decoding='async'
+    fetchpriority={isLCP ? 'high' : 'auto'}
+    class='block w-full aspect-[5/3] object-cover rounded-t-lg'
+    style='transition: transform 200ms ease;'
+  />
   <div class='w-full flex justify-between items-baseline leading-tight'>
     <div
       class='text-gray-800 dark:text-gray-200 font-semibold md:text-lg text-lg overflow-hidden text-ellipsis whitespace-nowrap flex-1 mr-4 min-w-0'
@@ -54,6 +73,9 @@ const tags = post.frontmatter.tags ?? [];
       </div>
     )
   }
+  <p class='text-gray-600 dark:text-gray-300 overflow-hidden pt-2 line-clamp-2 w-full md:text-sm text-base px-3 md:h-12 h-14'>
+    {description}
+  </p>
 </a>
 
 <style>
