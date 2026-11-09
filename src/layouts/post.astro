@@ -14,6 +14,8 @@ export interface Props {
   frontmatter: {
     date: string;
     tags?: string[];
+    image?: string;
+    description?: string;
     url: string;
     socialImage: string;
     numericUrl?: string;
@@ -30,7 +32,8 @@ const normalize = (path: string | undefined) => {
   if (!path) return path;
   return path !== '/' && path.endsWith('/') ? path.slice(0, -1) : path;
 };
-const { date, tags = [], url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
+const { date, tags = [], image: sourceImage, description, url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
+const coverImage = !sourceImage || sourceImage.endsWith('/icon-144.png') ? '/assets/1.svg' : sourceImage;
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useLocalizedPath(lang);
@@ -54,6 +57,8 @@ const content = {
   title,
   description: SITE.description,
   socialImage,
+  image: coverImage,
+  description: description || SITE.description,
   date,
   tags,
 };
@@ -80,6 +85,7 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
 <BaseLayout title={`${SITE.title}${title}`} content={content} pageURL={currentUrl}>
   <meta slot='head' data-pagefind-meta={`url:${currentUrl}`} />
   {heroImage && <link rel='preload' as='image' href={heroImage} slot='head' fetchpriority='high' />}
+  <link rel='preload' as='image' href={coverImage} slot='head' fetchpriority='high' />
   <!-- Post-specific styles -->
   <style slot='head'>
     body {
@@ -106,6 +112,22 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
 
     .content-title {
       align-items: center;
+    }
+
+    .article-cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 5 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .article-description {
+      display: block;
+      margin: -8px 0 24px;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .content-title .content-logo {
@@ -327,6 +349,8 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
           <ReaderModeToggle />
           <Search />
         </h1>
+        <img class='article-cover' src={coverImage} alt={title} width='1280' height='768' decoding='async' />
+        {description && <small class='article-description text-gray-600 dark:text-gray-300'>{description}</small>}
         <slot />
         {
           tags.length > 0 && (

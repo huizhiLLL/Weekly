@@ -7,7 +7,7 @@ export interface Props {
     frontmatter: {
       tags?: string[];
       image?: string;
-      description: string;
+      description?: string;
       date: string;
       legacySlug?: string;
       issueTitle?: string;
@@ -32,7 +32,6 @@ const image = !sourceImage || sourceImage.endsWith('/icon-144.png') ? '/assets/1
 const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*)?$/i)
   ? `${image}?x-oss-process=image/resize,w_640/format,webp`
   : image;
-const tags = post.frontmatter.tags ?? [];
 ---
 
 <a
@@ -64,20 +63,12 @@ const tags = post.frontmatter.tags ?? [];
     </time>
   </div>
   {
-    tags.length > 0 && (
-      <div class='article-tags' aria-label='文章标签'>
-        {tags.map((tag, index) => (
-          <>
-            {index > 0 && <span class='article-tag-separator' aria-hidden='true'>|</span>}
-            <span>{tag}</span>
-          </>
-        ))}
-      </div>
+    description && (
+      <p class='text-gray-600 dark:text-gray-300 overflow-hidden pt-2 line-clamp-2 w-full md:text-sm text-base px-3 md:h-12 h-14'>
+        {description}
+      </p>
     )
   }
-  <p class='text-gray-600 dark:text-gray-300 overflow-hidden pt-2 line-clamp-2 w-full md:text-sm text-base px-3 md:h-12 h-14'>
-    {description}
-  </p>
 </a>
 
 <style>
@@ -92,29 +83,4 @@ const tags = post.frontmatter.tags ?? [];
     }
   }
 
-  .article-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    padding-top: 10px;
-    color: rgb(107 114 128);
-    font-size: 13px;
-    line-height: 1.4;
-  }
-
-  .article-tags span {
-    white-space: nowrap;
-  }
-
-  .article-tag-separator {
-    color: rgb(156 163 175);
-  }
-
-  :global([data-theme='dark']) .article-tags {
-    color: rgb(209 213 219);
-  }
-
-  :global([data-theme='dark']) .article-tag-separator {
-    color: rgb(107 114 128);
-  }
 </style>
