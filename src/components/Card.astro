@@ -38,8 +38,8 @@ const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*
   href={link}
   data-astro-prefetch
   data-image={image}
-  class='article-card rounded-lg shadow-md overflow-hidden w-full card-content preload-link'
-  style='transition: all 200ms ease; will-change: transform;'
+  class='article-card w-full card-content preload-link'
+  style='transition: transform 200ms ease; will-change: transform;'
 >
   <img
     src={cardImage}
@@ -49,12 +49,12 @@ const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*
     loading={priority ? 'eager' : 'lazy'}
     decoding='async'
     fetchpriority={isLCP ? 'high' : 'auto'}
-    class='block w-full aspect-[5/3] object-cover rounded-t-lg'
+    class='card-image block w-full aspect-[5/3] object-cover rounded-lg'
     style='transition: transform 200ms ease;'
   />
-  <div class='w-full flex justify-between items-baseline leading-tight'>
+  <div class='card-meta w-full flex justify-between items-baseline leading-tight'>
     <div
-      class='text-gray-800 dark:text-gray-200 font-semibold md:text-lg text-lg overflow-hidden text-ellipsis whitespace-nowrap flex-1 mr-4 min-w-0'
+      class='text-gray-800 dark:text-gray-200 font-semibold md:text-base text-base overflow-hidden text-ellipsis whitespace-nowrap flex-1 mr-4 min-w-0'
     >
       {title}
     </div>
@@ -74,13 +74,10 @@ const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*
 <style>
   .article-card {
     display: block;
-    padding: 18px 20px;
   }
 
-  @media (max-width: 640px) {
-    .article-card {
-      padding: 16px;
-    }
+  .card-meta {
+    margin-top: 14px;
   }
 
 </style>
