@@ -113,37 +113,23 @@
   },
   {
     "num": 3,
-    "title": "进展与维护",
+    "title": "ロック风アレンジ",
     "url": "https://weekly.huizhi.ink/posts/3",
     "pic": "/assets/26-03/aletheia.png",
-    "tags": [
-      "进展",
-      "维护",
-      "Aletheia"
-    ]
+    "tags": []
   },
   {
     "num": 2,
-    "title": "DCTimer-BLE 的发布",
+    "title": "Dusk",
     "url": "https://weekly.huizhi.ink/posts/2",
     "pic": "/assets/26-02/dctimer.png",
-    "tags": [
-      "DCTImer-BLE",
-      "迁移",
-      "codex"
-    ]
+    "tags": []
   },
   {
     "num": 1,
-    "title": "从 Memos 到 Weekly",
+    "title": "Asphyxia",
     "url": "https://weekly.huizhi.ink/posts/1",
     "pic": "/assets/26-01/wakatime.png",
-    "tags": [
-      "迁移",
-      "Kami",
-      "魔方",
-      "开发",
-      "AI"
-    ]
+    "tags": []
   }
 ]

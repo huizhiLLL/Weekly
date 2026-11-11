@@ -22,9 +22,9 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 * [第 6 期 - アゲイン](https://weekly.huizhi.ink/posts/6)
 * [第 5 期 - 潮鳴り](https://weekly.huizhi.ink/posts/5)
 * [第 4 期 - Bloom of Youth](https://weekly.huizhi.ink/posts/4)
-* [第 3 期 - 进展与维护](https://weekly.huizhi.ink/posts/3)
-* [第 2 期 - DCTimer-BLE 的发布](https://weekly.huizhi.ink/posts/2)
-* [第 1 期 - 从 Memos 到 Weekly](https://weekly.huizhi.ink/posts/1)
+* [第 3 期 - ロック风アレンジ](https://weekly.huizhi.ink/posts/3)
+* [第 2 期 - Dusk](https://weekly.huizhi.ink/posts/2)
+* [第 1 期 - Asphyxia](https://weekly.huizhi.ink/posts/1)
 
 
 ## Writing
