@@ -71,25 +71,17 @@
   },
   {
     "num": 9,
-    "title": "AI前端思考",
+    "title": "Luv Letter",
     "url": "https://weekly.huizhi.ink/posts/9",
     "pic": "",
-    "tags": [
-      "AI",
-      "前端字体",
-      "曲折"
-    ]
+    "tags": []
   },
   {
     "num": 8,
-    "title": "博客周刊的内容思考",
+    "title": "바람에 쓰는 편지",
     "url": "https://weekly.huizhi.ink/posts/8",
     "pic": "/assets/26-08/photo.png",
-    "tags": [
-      "图片超分",
-      "内容思考",
-      "转向tags"
-    ]
+    "tags": []
   },
   {
     "num": 7,
