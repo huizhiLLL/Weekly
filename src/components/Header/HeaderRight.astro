@@ -13,5 +13,31 @@ const t = useTranslations(lang);
   <HeaderLink href={blogPage} target='_blank' class='hidden md:inline-flex'>{t('nav.home')}</HeaderLink>
   <HeaderLink href={`https://github.com/${githubId}`} target='_blank' class='hidden md:inline-flex'>{t('nav.github')}</HeaderLink>
 
-  <Search />
+  <div class='header-tools'>
+    <p class='site-note text-gray-600 dark:text-gray-300'>每周分享一首音乐，顺便记录点什么</p>
+    <Search />
+  </div>
 </div>
+
+<style>
+  .header-tools {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-left: auto;
+  }
+
+  .site-note {
+    display: none;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 1080px) {
+    .site-note {
+      display: block;
+    }
+  }
+</style>
