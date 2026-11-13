@@ -14,7 +14,10 @@ const t = useTranslations(lang);
   <HeaderLink href={`https://github.com/${githubId}`} target='_blank' class='hidden md:inline-flex'>{t('nav.github')}</HeaderLink>
 
   <div class='header-tools'>
-    <p class='site-note text-gray-600 dark:text-gray-300'>每周分享一首音乐，顺便记录点什么</p>
+    <p class='site-note text-gray-600 dark:text-gray-300'>
+      <span class='site-note-desktop'>每周分享一首音乐，顺便记录点什么</span>
+      <span class='site-note-mobile'>分享音乐与日常记录</span>
+    </p>
     <Search />
   </div>
 </div>
@@ -28,16 +31,38 @@ const t = useTranslations(lang);
   }
 
   .site-note {
-    display: none;
+    display: block;
     margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
+    max-width: 132px;
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: right;
     white-space: nowrap;
+  }
+
+  .site-note-desktop {
+    display: none;
+  }
+
+  .site-note-mobile {
+    display: inline;
   }
 
   @media (min-width: 1080px) {
     .site-note {
-      display: block;
+      max-width: none;
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .site-note-desktop {
+      display: inline;
+    }
+
+    .site-note-mobile {
+      display: none;
     }
   }
 </style>
