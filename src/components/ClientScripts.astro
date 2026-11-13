@@ -57,6 +57,63 @@
   import 'photoswipe/style.css';
 
   document.addEventListener('DOMContentLoaded', () => {
+    const loadProgressiveImages = (root: ParentNode = document) => {
+      root.querySelectorAll<HTMLElement>('[data-progressive-image]').forEach((frame) => {
+        if (frame.dataset.progressiveInitialized === 'true') return;
+        frame.dataset.progressiveInitialized = 'true';
+
+        const placeholder = frame.querySelector<HTMLImageElement>('.card-image-placeholder');
+        const image = frame.querySelector<HTMLImageElement>('.card-image-full');
+        if (!placeholder || !image) return;
+
+        const source = image.dataset.src;
+        const storageKey = source ? `weekly-image-ready:${source}` : '';
+        const revealImage = () => {
+          frame.classList.add('is-loaded');
+          if (storageKey) {
+            try {
+              sessionStorage.setItem(storageKey, '1');
+            } catch {
+              // Storage can be unavailable in private browsing or restricted contexts.
+            }
+          }
+        };
+        const keepPlaceholder = () => image.classList.add('is-error');
+        const loadFullImage = () => {
+          if (!source || image.src) return;
+          image.addEventListener('load', revealImage, { once: true });
+          image.addEventListener('error', keepPlaceholder, { once: true });
+          image.src = source;
+          if (image.complete) {
+            if (image.naturalWidth > 0) revealImage();
+            else keepPlaceholder();
+          }
+        };
+
+        let isWarm = false;
+        if (storageKey) {
+          try {
+            isWarm = sessionStorage.getItem(storageKey) === '1';
+          } catch {
+            // Storage can be unavailable in private browsing or restricted contexts.
+          }
+        }
+
+        if (isWarm) {
+          loadFullImage();
+        } else {
+          placeholder.addEventListener('load', loadFullImage, { once: true });
+          placeholder.addEventListener('error', loadFullImage, { once: true });
+          if (placeholder.complete) loadFullImage();
+        }
+      });
+    };
+
+    loadProgressiveImages();
+
+    // Astro view transitions can replace the page without re-running DOMContentLoaded.
+    document.addEventListener('astro:page-load', () => loadProgressiveImages());
+
     // Open external links in a new tab
     Array.from(document.links).forEach((link) => {
       if (link.hostname !== window.location.hostname) {

@@ -29,9 +29,15 @@ const title = parseTitle(link, legacySlug, issueTitle, lang);
 const { description, date } = post.frontmatter;
 const sourceImage = post.frontmatter.image;
 const image = !sourceImage || sourceImage.endsWith('/icon-144.png') ? '/assets/1.svg' : sourceImage;
-const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*)?$/i)
-  ? `${image}?x-oss-process=image/resize,w_640/format,webp`
+const isOptimizableRemoteImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*)?$/i);
+const imageQuerySeparator = image.includes('?') ? '&' : '?';
+const cardImage = isOptimizableRemoteImage
+  ? `${image}${imageQuerySeparator}x-oss-process=image/resize,w_640/format,webp`
   : image;
+const thumbnailImage = isOptimizableRemoteImage
+  ? `${image}${imageQuerySeparator}x-oss-process=image/resize,w_48/quality,Q_35/format,webp`
+  : image;
+const transitionName = `post-cover-${link.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
 ---
 
 <a
@@ -41,17 +47,36 @@ const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*
   class='article-card w-full card-content preload-link'
   style='transition: transform 200ms ease; will-change: transform;'
 >
-  <img
-    src={cardImage}
-    width='640'
-    height='384'
-    alt={title}
-    loading={priority ? 'eager' : 'lazy'}
-    decoding='async'
-    fetchpriority={isLCP ? 'high' : 'auto'}
-    class='card-image block w-full aspect-[5/3] object-cover rounded-lg'
-    style='transition: transform 200ms ease;'
-  />
+  <span
+    class='card-image-frame block w-full aspect-[5/3] overflow-hidden rounded-lg'
+    data-progressive-image
+    data-progressive-key={cardImage}
+    transition:name={transitionName}
+  >
+    <img
+      src={thumbnailImage}
+      width='640'
+      height='384'
+      alt=''
+      aria-hidden='true'
+      loading={priority ? 'eager' : 'lazy'}
+      decoding='async'
+      class='card-image card-image-placeholder block w-full h-full object-cover'
+    />
+    <img
+      data-src={cardImage}
+      width='640'
+      height='384'
+      alt={title}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding='async'
+      fetchpriority={isLCP ? 'high' : 'auto'}
+      class='card-image card-image-full block w-full h-full object-cover'
+    />
+    <noscript>
+      <img src={cardImage} width='640' height='384' alt={title} class='block w-full h-full object-cover' />
+    </noscript>
+  </span>
   <div class='card-meta w-full flex justify-between items-baseline leading-tight'>
     <div
       class='text-gray-800 dark:text-gray-200 font-semibold md:text-base text-base overflow-hidden text-ellipsis whitespace-nowrap flex-1 mr-4 min-w-0'
@@ -74,6 +99,40 @@ const cardImage = image.startsWith('http') && !image.match(/\.(?:svg|gif)(?:\?.*
 <style>
   .article-card {
     display: block;
+  }
+
+  .card-image-frame {
+    position: relative;
+    isolation: isolate;
+    background: var(--theme-divider);
+  }
+
+  .card-image {
+    position: absolute;
+    inset: 0;
+    transition:
+      opacity 420ms ease,
+      filter 420ms ease,
+      transform 200ms ease;
+  }
+
+  .card-image-placeholder {
+    z-index: 0;
+    filter: blur(18px);
+    transform: scale(1.06);
+  }
+
+  .card-image-full {
+    z-index: 1;
+    opacity: 0;
+  }
+
+  .card-image-frame.is-loaded .card-image-full {
+    opacity: 1;
+  }
+
+  .card-image-frame.is-loaded .card-image-placeholder {
+    opacity: 0;
   }
 
   .card-meta {

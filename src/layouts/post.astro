@@ -41,6 +41,7 @@ const translatePath = useLocalizedPath(lang);
 const normalizedCurrent = normalize(currentPage) ?? currentPage;
 const normalizedNumeric = normalize(numericUrl);
 const effectivePath = normalizedNumeric ?? normalizedCurrent;
+const transitionName = `post-cover-${effectivePath.replace(/[^a-zA-Z0-9_-]/g, '-')}`;
 let title = parseTitle(effectivePath, legacySlug, issueTitle, lang);
 
 const { numberPart, name } = getSlugParts(legacySlug ?? extractTitlePart(effectivePath));
@@ -114,13 +115,21 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
       align-items: center;
     }
 
-    .article-cover {
+    .article-cover-frame {
       display: block;
       width: 100%;
       aspect-ratio: 5 / 3;
-      object-fit: cover;
       border-radius: 8px;
       margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .article-cover {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
     }
 
     .article-description {
@@ -349,7 +358,9 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
           <ReaderModeToggle />
           <Search />
         </h1>
-        <img class='article-cover' src={coverImage} alt={title} width='1280' height='768' decoding='async' />
+        <div class='article-cover-frame' transition:name={transitionName}>
+          <img class='article-cover' src={coverImage} alt={title} width='1280' height='768' decoding='async' />
+        </div>
         {description && <small class='article-description text-gray-600 dark:text-gray-300'>{description}</small>}
         <slot />
         {

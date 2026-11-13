@@ -43,6 +43,16 @@ const seoContent = {
     <HeadSEO content={seoContent} pageURL={pageURL} />
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
+    <style is:inline>
+      @view-transition {
+        navigation: auto;
+      }
+
+      ::view-transition-group(*) {
+        animation-duration: 320ms !important;
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+      }
+    </style>
     <slot name='head' />
   </head>
 
