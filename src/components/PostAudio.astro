@@ -25,6 +25,7 @@ const { src, title } = Astro.props;
       if (button.hasAttribute('aria-disabled')) return;
 
       button.setAttribute('aria-disabled', 'true');
+      status.classList.add('sr-only');
       status.textContent = '正在加载音频…';
       audio.src = src;
 
@@ -40,6 +41,7 @@ const { src, title } = Astro.props;
         status.textContent = '音频加载失败，可以再试一次。';
       } finally {
         button.removeAttribute('aria-disabled');
+        status.classList.remove('sr-only');
       }
     });
   }
@@ -52,7 +54,10 @@ const { src, title } = Astro.props;
     border-block: 1px solid var(--theme-divider);
   }
 
-  button {
+  button:not([hidden]) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     min-height: 44px;
     max-width: 100%;
     text-align: start;
@@ -67,6 +72,33 @@ const { src, title } = Astro.props;
 
   button[aria-disabled='true'] {
     cursor: progress;
+  }
+
+  button::after {
+    content: '';
+    flex: none;
+    width: 0.85em;
+    height: 0.85em;
+    border: 2px solid currentColor;
+    border-inline-end-color: transparent;
+    border-radius: 50%;
+    visibility: hidden;
+  }
+
+  button[aria-disabled='true']::after {
+    visibility: visible;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    button[aria-disabled='true']::after {
+      animation: post-audio-spin 700ms linear infinite;
+    }
+  }
+
+  @keyframes post-audio-spin {
+    to {
+      transform: rotate(1turn);
+    }
   }
 
   audio {
