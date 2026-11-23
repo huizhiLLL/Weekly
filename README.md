@@ -39,3 +39,15 @@ tags:
   - AI
   - 魔方
 ```
+
+### 文章配乐
+
+把音频放在 Obsidian 的当期素材目录里，和封面放在一起。例如，封面是 `/assets/26-21/bg.jpg`，音频就放在 `Essay/Weekly/assets/26-21/`。同步 Action 会把整个素材目录复制到站点的 `public/assets/`。
+
+目录里只有一首音频时，站点会自动选中它，文件名可以自定。自动识别 MP3、M4A、AAC、OGG、Opus、WAV 和 FLAC。目录里有多首时，可以在 Obsidian 添加文本属性 `music` 来选曲。手动指定的路径优先。
+
+```yaml
+music: /assets/26-21/track.mp3
+```
+
+播放器显示在封面下方，读者点击播放后才请求音频。音频文件会随站点公开发布。

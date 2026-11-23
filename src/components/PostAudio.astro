@@ -1,0 +1,81 @@
+---
+interface Props {
+  src: string;
+  title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<div class='post-audio' data-post-audio={src} data-pagefind-ignore>
+  <button type='button'>播放 {title}</button>
+  <audio aria-label={title} controls preload='none' hidden></audio>
+  <small role='status'></small>
+</div>
+
+<script>
+  for (const player of document.querySelectorAll<HTMLElement>('[data-post-audio]')) {
+    const src = player.dataset.postAudio;
+    const button = player.querySelector('button');
+    const audio = player.querySelector('audio');
+    const status = player.querySelector('small');
+    if (!src || !button || !audio || !status) continue;
+
+    button.addEventListener('click', async () => {
+      if (button.hasAttribute('aria-disabled')) return;
+
+      button.setAttribute('aria-disabled', 'true');
+      status.textContent = '正在加载音频…';
+      audio.src = src;
+
+      try {
+        await audio.play();
+        audio.hidden = false;
+        if (document.activeElement === button) audio.focus();
+        button.hidden = true;
+        status.textContent = '';
+      } catch {
+        audio.removeAttribute('src');
+        audio.load();
+        status.textContent = '音频加载失败，可以再试一次。';
+      } finally {
+        button.removeAttribute('aria-disabled');
+      }
+    });
+  }
+</script>
+
+<style>
+  .post-audio {
+    margin-block: 0 24px;
+    padding-block: 10px;
+    border-block: 1px solid var(--theme-divider);
+  }
+
+  button {
+    min-height: 44px;
+    max-width: 100%;
+    text-align: start;
+    overflow-wrap: anywhere;
+  }
+
+  button:hover,
+  button:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  button[aria-disabled='true'] {
+    cursor: progress;
+  }
+
+  audio {
+    width: 100%;
+    color-scheme: light dark;
+  }
+
+  small:not(:empty) {
+    display: block;
+    font-size: var(--font-size-small);
+  }
+</style>

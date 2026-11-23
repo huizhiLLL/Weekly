@@ -5,6 +5,7 @@ import AstroLogo from '../components/Header/AstroLogo.astro';
 import LeftSidebar from '../components/LeftSidebar.astro';
 import Search from '../components/Header/Search.astro';
 import ReaderModeToggle from '../components/ReaderModeToggle.astro';
+import PostAudio from '../components/PostAudio.astro';
 import { SITE, GISCUS_CONFIG } from '@/config';
 import { SUPPORT_CALLOUT } from '@/supportCallout';
 import { parseTitle, sortPosts, getIndex, toNumericUrl, extractTitlePart, getSlugParts } from '@/util';
@@ -23,6 +24,7 @@ export interface Props {
     issueTitle?: string;
     issueNumber?: number;
     heroImage?: string;
+    music?: string;
   };
 }
 
@@ -32,7 +34,7 @@ const normalize = (path: string | undefined) => {
   if (!path) return path;
   return path !== '/' && path.endsWith('/') ? path.slice(0, -1) : path;
 };
-const { date, tags = [], image: sourceImage, description, url, socialImage, numericUrl, legacySlug, issueTitle, heroImage } = Astro.props.frontmatter;
+const { date, tags = [], image: sourceImage, description, url, socialImage, numericUrl, legacySlug, issueTitle, heroImage, music } = Astro.props.frontmatter;
 const coverImage = !sourceImage || sourceImage.endsWith('/icon-144.png') ? '/assets/1.svg' : sourceImage;
 
 const lang = getLangFromUrl(Astro.url);
@@ -362,6 +364,7 @@ const giscusTheme = `${Astro.url.origin}/styles/giscus-light.css`;
           <img class='article-cover' src={coverImage} alt={title} width='1280' height='768' decoding='async' />
         </div>
         {description && <small class='article-description text-gray-600 dark:text-gray-300'>{description}</small>}
+        {music && <PostAudio src={music} title={displayTitle || title} />}
         <slot />
         {
           tags.length > 0 && (

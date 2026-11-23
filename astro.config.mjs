@@ -39,6 +39,26 @@ function normalizeAssetPath(src) {
   return src;
 }
 
+function resolvePostMusic(image, music) {
+  if (typeof music === "string" && music.trim()) {
+    return normalizeAssetPath(music.trim());
+  }
+
+  const issueDirectory = image.match(/^\/assets\/(\d{2}-\d+)\//)?.[1];
+  if (!issueDirectory) return undefined;
+
+  const assetPath = `/assets/${issueDirectory}/`;
+  const directory = new URL(`./public${assetPath}`, import.meta.url);
+  if (!fs.existsSync(directory)) return undefined;
+
+  const audioFiles = fs.readdirSync(directory, { withFileTypes: true }).filter(
+    (entry) => entry.isFile() && /\.(mp3|m4a|aac|ogg|opus|wav|flac)$/i.test(entry.name),
+  );
+  if (audioFiles.length === 1) {
+    return assetPath + encodeURIComponent(audioFiles[0].name);
+  }
+}
+
 function defaultLayoutPlugin() {
   return function (tree, file) {
     const filePath = file.history[0];
@@ -74,6 +94,7 @@ function defaultLayoutPlugin() {
     }
 
     frontmatter.image = normalizeAssetPath(frontmatter.image || SITE.siteImage);
+    frontmatter.music = resolvePostMusic(frontmatter.image, frontmatter.music);
 
     // Fallback to file creation time if no date is specified
     if (!frontmatter.date) {
