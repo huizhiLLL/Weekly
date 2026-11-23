@@ -6,6 +6,7 @@ huizhiLLL 的个人周记站点，用来记录每周想法、阅读笔记、技�
 
 ## List
 
+* [第 21 期 - Lonely Day](https://weekly.huizhi.ink/posts/21)
 * [第 20 期 - The truth that you leave](https://weekly.huizhi.ink/posts/20)
 * [第 19 期 - My Soul](https://weekly.huizhi.ink/posts/19)
 * [第 18 期 - Illusionary Daytime](https://weekly.huizhi.ink/posts/18)
